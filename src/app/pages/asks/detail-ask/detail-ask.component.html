@@ -1,0 +1,30 @@
+<div class="container mx-auto pt-4">
+  <a
+    [routerLink]="['/asks']"
+    class="px-4 py-2 bg-blue-400 rounded-sm text-white"
+  >
+    Kembali
+  </a>
+  <ul class="mt-4">
+    <li class="mb-2">
+      {{ data?.title }}
+    </li>
+    <div class="text-xs mb-4 text-gray-500">
+      <span class="mr-1">{{ data?.score + " points" }}</span>
+      <span class="mr-1">{{ "by " + data?.by }}</span>
+      <span class="mr-1">{{ data?.time | dateAgo }}</span>
+      <span>| {{ data?.kids?.length ? data?.kids?.length : 0 }} comments</span>
+    </div>
+    <p [innerHTML]="data?.text"></p>
+
+    <!-- Untuk comment -->
+    <ul class="list-decimal pl-4 mt-6">
+      <li class="text-sm mb-3 text-gray-500" *ngFor="let item of listComment">
+        <span class="mr-1">{{ item?.by }}</span>
+        <span class="mr-1">{{ item?.time | dateAgo }}</span>
+        <p class="text-black" [innerHTML]="item?.text"></p>
+      </li>
+    </ul>
+  </ul>
+</div>
+<router-outlet></router-outlet>

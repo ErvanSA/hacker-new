@@ -1,0 +1,18 @@
+<div class="container mx-auto">
+  <ul class="list-decimal">
+    <li class="mb-2" *ngFor="let item of listAsks; let i = index">
+      <a [routerLink]="'detail/' + item?.id">
+        {{ item?.title }}
+      </a>
+      <div class="text-xs text-gray-500">
+        <span class="mr-1">{{ item?.score + " points" }}</span>
+        <span class="mr-1">{{ "by " + item?.by }}</span>
+        <span class="mr-1">{{ item?.time | dateAgo }}</span>
+        <span
+          >| {{ item?.kids?.length ? item?.kids?.length : 0 }} comments</span
+        >
+      </div>
+    </li>
+  </ul>
+</div>
+<router-outlet></router-outlet>
